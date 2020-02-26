@@ -1728,7 +1728,16 @@ $user = \RunetID\Api\User::model($api)->getByToken(token);<br />
         </span><span class="s2">"LNK[Мероприятие](#5-9)"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"Participations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LNK[Участие на мероприятиях](#5-11)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"LNK[Доклад](#5-18)"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LNK[Статус пользователя](#5-20)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Аналитика"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.borzov@gmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79637654577"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"PhoneFormatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8 (963) 765-45-77"</span><span class="p">,</span><span class="w">
@@ -5075,6 +5084,22 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>GET http://api.runet-id.com/user/list</code> </p>
+<h3 id='parameters-86'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Название</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageToken</td>
+<td>Указатель на следующую страницу</td>
+</tr>
+<tr>
+<td>MaxResults</td>
+<td>Максимальное количество записей в ответе</td>
+</tr>
+</tbody></table>
 <h2 id='20-8'>20.8. Авторизация</h2>
 <p>Авторизация, проверка связки Email и Password.</p>
 
@@ -5096,7 +5121,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>GET http://api.runet-id.com/user/login</code> </p>
-<h3 id='parameters-86'>Parameters</h3>
+<h3 id='parameters-87'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5140,7 +5165,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Позволяет сменить пароль указанного пользователя.</p>
 
 <p><code>POST http://api.runet-id.com/user/passwordChange</code> </p>
-<h3 id='parameters-87'>Parameters</h3>
+<h3 id='parameters-88'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5166,7 +5191,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Инициирует отправку письма с инструкциями по восстановлению пароля.</p>
 
 <p><code>POST http://api.runet-id.com/user/passwordRestore</code> </p>
-<h3 id='parameters-88'>Parameters</h3>
+<h3 id='parameters-89'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5194,7 +5219,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>GET http://api.runet-id.com/user/search</code> </p>
-<h3 id='parameters-89'>Parameters</h3>
+<h3 id='parameters-90'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5232,7 +5257,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Устанавливает фотографию посетителя из файла изображения или ссылки на него.</p>
 
 <p><code>GET http://api.runet-id.com/user/setphoto</code> </p>
-<h3 id='parameters-90'>Parameters</h3>
+<h3 id='parameters-91'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5255,7 +5280,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Позволяет отписать и подписать пользователя на следующие события: EMail рассылки, Push уведомления, индексацию профиля в поисковых системах. Важное замечание: изменяется состояние только тех полей, которые были переданы.</p>
 
 <p><code>POST http://api.runet-id.com/user/settings</code> </p>
-<h3 id='parameters-91'>Parameters</h3>
+<h3 id='parameters-92'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5292,7 +5317,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">Success</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST http://api.runet-id.com/user/favoriteCreate</code> </p>
-<h3 id='parameters-92'>Parameters</h3>
+<h3 id='parameters-93'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5329,7 +5354,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">Success</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST http://api.runet-id.com/user/favoriteDelete</code> </p>
-<h3 id='parameters-93'>Parameters</h3>
+<h3 id='parameters-94'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5361,7 +5386,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Позволяет импортировать избранные данные из разных источников.</p><p><b>Как готовить данные для параметра EncodedCredentials</b>:</p><ul><li><b>Телефоны</b>: убираем все символы не являющиеся цифрами. Если номер телефона содержит только 10 символов, то дописываем к нему 7 что бы получить номер вида 79221234567. Считаем md5 хеш полученного числа и приписываем в его начало латинский символ 'p'.</li><li><b>Email адреса</b>: на всякий случай удаляем пробельные символы в начале и конце строки и переводим все символы в нижний регистр. Считаем md5 хеш полученной строки и дописываем в его начало латинский символ 'e'.</li></ul><p>В результате должны получиться строки 33 символа длиной, первым символом которых могут быть только 'p' или 'e'. Склеиваем строки, используя в качестве разделителя запятую и передаём в параметре EncodedCredentials.</p>
 
 <p><code>POST http://api.runet-id.com/user/favoriteImport</code> </p>
-<h3 id='parameters-94'>Parameters</h3>
+<h3 id='parameters-95'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5387,7 +5412,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <p>Позволяет отобразить список избранного для указанного пользователя.</p><p><b>Как готовить данные для параметра EncodedCredentials</b>:</p><ul><li><b>Телефоны</b>: убираем все символы не являющиеся цифрами. Если номер телефона содержит только 10 символов, то дописываем к нему 7 что бы получить номер вида 79221234567. Считаем md5 хеш полученного числа и приписываем в его начало латинский символ 'p'.</li><li><b>Email адреса</b>: на всякий случай удаляем пробельные символы в начале и конце строки и переводим все символы в нижний регистр. Считаем md5 хеш полученной строки и дописываем в его начало латинский символ 'e'.</li></ul><p>В результате должны получиться строки 33 символа длиной, первым символом которых могут быть только 'p' или 'e'. Склеиваем строки, используя в качестве разделителя запятую и передаём в параметре EncodedCredentials.</p>
 
 <p><code>POST http://api.runet-id.com/user/favoriteSearch</code> </p>
-<h3 id='parameters-95'>Parameters</h3>
+<h3 id='parameters-96'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
@@ -5424,7 +5449,7 @@ curl -X POST -H <span class="s1">'ApiKey: XXX'</span> -H <span class="s1">'Hash:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">Success</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST http://api.runet-id.com/user/favoriteToggle</code> </p>
-<h3 id='parameters-96'>Parameters</h3>
+<h3 id='parameters-97'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Название</th>
